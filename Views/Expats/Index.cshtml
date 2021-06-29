@@ -1,0 +1,61 @@
+@model IEnumerable<PSMan.Models.ExpatsModel>
+
+@{ ViewData["Title"] = "Expats"; }
+
+<h1 class="display-5">Personnel list</h1>
+
+<p>A list of all expatriate personnel.</p>
+
+<form asp-controller="Expats" asp-action="Index" method="get">
+    <p>
+        Search by name: <input type="text" name="SearchString" />
+        <input type="submit" value="Apply filter" />
+        <a asp-action="Index">Back to list</a>
+    </p>
+</form>
+
+<p>
+<a asp-action="Create">Add a new axpatriate</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>}
+    </tbody>
+</table>

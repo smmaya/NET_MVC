@@ -1,0 +1,59 @@
+@model IEnumerable<PSMan.Models.TravelModel>
+
+@{ ViewData["Title"] = "Expatriate Travel"; }
+
+<h1 class="display-5">Travel list</h1>
+
+<p>A list of all travel to and from the project.</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromDepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToLandingTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Flight)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FromCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FromDepartureTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ToCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ToLandingTime)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
